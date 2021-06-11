@@ -23,6 +23,7 @@ class Employee extends Model
         'sss_no',
         'philhealth_no',
         'tin_no',
-        'role'
+        'role',
+        'qualification'
     ];
 }

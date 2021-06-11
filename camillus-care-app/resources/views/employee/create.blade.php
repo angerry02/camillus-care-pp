@@ -64,6 +64,13 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="qualification" class="col-sm-2 form-label">Qualification</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="qualification" name="qualification" class="form-control" required/>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="sss_no" class="col-sm-2 form-label">SSS#</label>
                     <div class="col-sm-6">
                         <input type="text" id="sss_no" name="sss_no" class="form-control" required/>

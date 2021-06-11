@@ -32,7 +32,8 @@ class EmployeeController extends Controller
             'sss_no' => request('sss_no'),
             'philhealth_no' => request('philhealth_no'),
             'tin_no' => request('tin_no'),
-            'role' => request('role')
+            'role' => request('role'),
+            'qualification' => request('qualification')
         ]);
 
         return redirect('/employee')
@@ -58,7 +59,8 @@ class EmployeeController extends Controller
             'sss_no' => request('sss_no'),
             'philhealth_no' => request('philhealth_no'),
             'tin_no' => request('tin_no'),
-            'role' => request('role')
+            'role' => request('role'),
+            'qualification' => request('qualification')
         ]);
 
         return redirect('/employee')
