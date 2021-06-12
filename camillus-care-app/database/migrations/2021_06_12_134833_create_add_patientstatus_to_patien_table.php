@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddQualificatioToEmployeesTable extends Migration
+class CreateAddPatientstatusToPatienTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddQualificatioToEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->string('qualification')->nullable();
+        Schema::table('patients', function (Blueprint $table) {
+            $table->string('patient_status')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddQualificatioToEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->string('qualification');
+        Schema::table('patients', function (Blueprint $table) {
+            $table->string('patient_status');
         });
     }
 }

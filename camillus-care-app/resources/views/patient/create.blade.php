@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST" action="/employee/save">
+<form method="POST" action="/patient/save">
     @method('POST')
     @csrf
 
@@ -14,91 +14,110 @@
                 </h3>
             </div>
             <div class="card-body">
-                <div class="form-group">
-                    <label for="last_name" class="col-sm-2 form-label">Last Name</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="last_name" name="last_name" class="form-control" required/>
-                    </div>
-                </div>
+                <div class="row">
+                    <div class="col-md-6" style="border-right: solid rgb(133, 131, 131) 2px;">
+                        <div class="form-group">
+                            <label for="last_name" class="col-sm-2 form-label">Last Name</label>
+                            <input type="text" id="last_name" name="last_name" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="first_name" class="col-sm-2 form-label">First Name</label>
+                            <input type="text" id="first_name" name="first_name" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="middle_name" class="col-sm-2 form-label">Middle Name</label>
+                            <input type="text" id="middle_name" name="middle_name" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 form-label">Address</label>
+                            <textarea id="address" name="address" class="form-control" required></textarea>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="gender" class="col-sm-2 form-label">Gender</label>
+                            <select id="gender" name="gender" class="form-control" required> 
+                                <option>--- Select gender ---</option>
+                                <option value="MALE">MALE</option>
+                                <option value="FEMALE">FEMALE</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 form-label">Age</label>
+                            <input type="number" id="age" name="age" class="form-control" required/>
+                        </div>
 
-                <div class="form-group">
-                    <label for="first_name" class="col-sm-2 form-label">First Name</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="first_name" name="first_name" class="form-control" required/>
+                        <div class="form-group">
+                            <label for="weight" class="col-sm-2 form-label">Weight(kg)</label>
+                            <input type="number" id="weight" name="weight" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="height" class="col-sm-2 form-label">Height(m)</label>
+                            <input type="number" id="height" name="height" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="allergies" class="col-sm-2 form-label">Allergies</label>
+                            <input type="text" id="allergies" name="allergies" class="form-control" required/>
+                        </div>
                     </div>
-                </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="hospital_no" class="col-sm-12 form-label">Hospital</label>
+                            <input type="text" id="hospital_no" name="hospital_no" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="room_no" class="col-sm-12 form-label">Room#</label>
+                            <input type="text" id="room_no" name="room_no" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="medical_diagnosis" class="col-sm-12 form-label">Medical Diagnosis</label>
+                            <input type="text" id="medical_diagnosis" name="medical_diagnosis" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="physical_limitation" class="col-sm-12 form-label">Physical Limitation</label>
+                            <textarea id="physical_limitation" name="physical_limitation" class="form-control" required></textarea>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="diet" class="col-sm-12 form-label">Diet</label>
+                            <input type="text" id="diet" name="diet" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="physician_name" class="col-sm-12 form-label">Physician Name</label>
+                            <input type="text" id="physician_name" name="physician_name" class="form-control" required/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="contact_person" class="col-sm-12 form-label">Contact Person</label>
+                            <input type="text" id="contact_person" name="contact_person" class="form-control" required/>
+                        </div>
 
-                <div class="form-group">
-                    <label for="middle_name" class="col-sm-2 form-label">Middle Name</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="middle_name" name="middle_name" class="form-control" required/>
-                    </div>
-                </div>
+                        <div class="form-group">
+                            <label for="contact_relationship" class="col-sm-12 form-label">Relationship(Contact Person)</label>
+                            <input type="text" id="contact_relationship" name="contact_relationship" class="form-control" required/>
+                        </div>
 
-                <div class="form-group">
-                    <label for="address" class="col-sm-2 form-label">Address</label>
-                    <div class="col-sm-6">
-                        <textarea id="address" name="address" class="form-control" required></textarea>
+                        <div class="form-group">
+                            <label for="contact_person_no" class="col-sm-12 form-label">Contact No(Contact Person)</label>
+                            <input type="text" id="contact_person_no" name="contact_person_no" class="form-control" required/>
+                        </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="contact_no" class="col-sm-2 form-label">Contact#</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="contact_no" name="contact_no" class="form-control" required/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="birth_date" class="col-sm-2 form-label">Birth Date</label>
-                    <div class="col-sm-6">
-                        <input type="date" id="birth_date" name="birth_date" class="form-control" required/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="date_hired" class="col-sm-2 form-label">Date Hired</label>
-                    <div class="col-sm-6">
-                        <input type="date" id="date_hired" name="date_hired" class="form-control" required/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="sss_no" class="col-sm-2 form-label">SSS#</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="sss_no" name="sss_no" class="form-control" required/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="philhealth_no" class="col-sm-2 form-label">PHILHEALTH#</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="philhealth_no" name="philhealth_no" class="form-control" required/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="tin_no" class="col-sm-2 form-label">Tin#</label>
-                    <div class="col-sm-6">
-                        <input type="text" id="tin_no" name="tin_no" class="form-control" required/>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="role" class="col-sm-2 form-label">Employee Role</label>
-                    <div class="col-sm-6">
-                        <select id="role" name="role" class="form-control" required> 
-                            <option>--- Select employee role ---</option>
-                            <option value="NURSE">NURSE</option>
-                            <option value="CAREGIVER">CAREGIVER</option>
-                        </select>
-                    </div>
-                </div>
-                
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-lg">Save</button>
-                <button type="button" class="btn btn-danger btn-lg">Close</button>
+                <div class="d-flex align-items-center justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-lg m-2">Save</button>
+                    <button type="button" class="btn btn-danger btn-lg m-2">Close</button>
+                </div>
             </div>
         </div>
     </div>

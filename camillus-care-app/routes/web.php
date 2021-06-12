@@ -26,4 +26,6 @@ Route::get('/employee/{employee}/edit', [EmployeeController::class, 'edit']);
 Route::put('/employee/edit/{employee}', [EmployeeController::class, 'update']);
 Route::delete('/employee/delete/{employee}', [EmployeeController::class, 'destroy']);
 
+Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/patient/create', [PatientController::class, 'create']);
+Route::post('/patient/save', [PatientController::class, 'store']);
