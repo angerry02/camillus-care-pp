@@ -57,7 +57,7 @@
         
                         <div class="form-group">
                             <label for="height" class="col-sm-2 form-label">Height(m)</label>
-                            <input type="number" id="height" name="height" class="form-control" required/>
+                            <input type="number" step=".01" id="height" name="height" class="form-control" required/>
                         </div>
         
                         <div class="form-group">
