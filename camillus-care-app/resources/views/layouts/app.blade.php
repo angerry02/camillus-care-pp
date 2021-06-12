@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ (request()->is('patient*')) ? 'active' : '' }}" href="#">
+            <a class="nav-link {{ (request()->is('patient*')) ? 'active' : '' }}" href="/patient">
               <span data-feather="file"></span>
               Patient
             </a>
