@@ -24,8 +24,14 @@ Route::get('/employee/create', [EmployeeController::class, 'create']);
 Route::get('/employee', [EmployeeController::class, 'index']);
 Route::get('/employee/{employee}/edit', [EmployeeController::class, 'edit']);
 Route::put('/employee/edit/{employee}', [EmployeeController::class, 'update']);
-Route::delete('/employee/delete/{employee}', [EmployeeController::class, 'destroy']);
+Route::get('/employee/delete/{employee}', [EmployeeController::class, 'destroy']);
 
 Route::get('/patient', [PatientController::class, 'index']);
 Route::get('/patient/create', [PatientController::class, 'create']);
 Route::post('/patient/save', [PatientController::class, 'store']);
+Route::get('/patient/delete/{patient}', [PatientController::class, 'destroy']);
+Route::get('/patient/{patient}/edit', [PatientController::class, 'edit']);
+Route::put('/patient/edit/{patient}', [PatientController::class, 'update']);
+///patient/schedule-manager/save
+Route::get('/patient/{patient}/manage-schedule', [PatientController::class, 'manageSchedule']);
+Route::post('/patient/schedule-manager/save', [PatientController::class, 'saveSchedule']);

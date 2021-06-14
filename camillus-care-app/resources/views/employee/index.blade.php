@@ -46,13 +46,9 @@
                             <a class="btn btn-sm btn-info" href="/employee/{{ $employee->employee_id }}/edit">
                                 <span data-feather="edit"></span>
                             </a>
-                            <form method="POST" action="/employee/delete/{{ $employee->employee_id }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">
-                                    <span data-feather="trash-2"></span>
-                                </button>
-                            </form>
+                            <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/employee/delete/{{ $employee->employee_id }}">
+                                <span data-feather="trash-2"></span>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

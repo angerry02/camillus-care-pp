@@ -26,7 +26,7 @@ class CreateAddContactRelationshipToPatienTable extends Migration
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->string('contact_person_no');
+            $table->dropColumn('contact_person_no');
         });
     }
 }

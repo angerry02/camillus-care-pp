@@ -105,7 +105,7 @@
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-lg">Save</button>
-                <button type="button" class="btn btn-danger btn-lg">Close</button>
+                <a type="button" href="{{ url()->previous() }}" class="btn btn-danger btn-lg">Close</a>
             </div>
         </div>
     </div>

@@ -71,6 +71,6 @@ class EmployeeController extends Controller
     {
         Employee::where('employee_id', $employee_id)->delete();
        
-        return redirect('/employee')->with('message', 'Employee data has been successfully updated.');
+        return redirect('/employee')->with('message', 'Employee data has been successfully deleted.');
     }
 }

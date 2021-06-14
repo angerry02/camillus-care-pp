@@ -22,8 +22,9 @@
                 <th scope="col">#</th>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Role</th>
+                <th scope="col">Diagnosis</th>
+                <th scope="col">Contact Person</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -36,18 +37,25 @@
                         <td>
                             <strong>{{$patient->last_name.', '.$patient->first_name.' '.$patient->middle_name }}</strong>
                         </td>
-                        <td>{{$patient->address}}</td>
+                        <td>{{$patient->medical_diagnosis}}</td>
+                        <td>{{$patient->contact_person}}</td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="/employee/{{ $patient->patient_id }}/edit">
+                            @if ($patient->patient_status === 0)
+                                <span class="badge bg-danger">NO SCHEDULE YET</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($patient->patient_status === 0)
+                                <a data-toggle="tooltip" data-placement="top" title="Assignning nurse/caregiver and schedule" class="btn btn-sm btn-success" href="/patient/{{ $patient->patient_id }}/manage-schedule">
+                                    <span data-feather="calendar"></span>
+                                </a>
+                            @endif
+                            <a class="btn btn-sm btn-info" href="/patient/{{ $patient->patient_id }}/edit">
                                 <span data-feather="edit"></span>
                             </a>
-                            <form method="POST" action="/employee/delete/{{ $patient->employee_id }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">
-                                    <span data-feather="trash-2"></span>
-                                </button>
-                            </form>
+                            <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/patient/delete/{{ $patient->patient_id }}">
+                                <span data-feather="trash-2"></span>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

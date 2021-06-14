@@ -14,7 +14,7 @@ class CreateAddPatientstatusToPatienTable extends Migration
     public function up()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->string('patient_status')->nullable();
+            $table->integer('patient_status')->default('0');
         });
     }
 
@@ -26,7 +26,7 @@ class CreateAddPatientstatusToPatienTable extends Migration
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->string('patient_status');
+            $table->dropColumn('patient_status');
         });
     }
 }
