@@ -5,7 +5,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <form method="POST" action="/patient/schedule-manager/save">
+    <form method="POST" action="/patient/schedule-manager/save/{{ $patient->patient_id }}">
         @method('POST')
         @csrf
 
@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                     <label for="from" class="col-sm-2 form-label">Start Time</label>
-                    <input type="time" id="from" step="3600000" name="from" class="form-control"/>
+                    <input type="time" id="from" name="from" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="to" class="col-sm-2 form-label">End Time</label>
-                    <input type="time" id="to" step="3600000" name="to" class="form-control"/>
+                    <input type="time" id="to" name="to" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="effective_date" class="col-sm-2 form-label">Effective Date</label>

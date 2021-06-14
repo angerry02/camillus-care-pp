@@ -56,13 +56,15 @@ class PatientController extends Controller
     public function manageSchedule(Patient $patient)
     {
         $employees = Employee::all();
+        $employeeSchedules = EmployeeSchedule::where('patient_id', $patient->patient_id);
 
-        return view('patient.schedule-manager', 
+        return view('patient.schedule-manager',
         ['patient' => $patient, 
+        'employeeSchedules' => $employeeSchedules,
         'employees' => $employees]);
     }
 
-    public function saveSchedule(Request $request)
+    public function saveSchedule(Request $request, $patient_id)
     {
         EmployeeSchedule::create([
             'from' => request('from'),
@@ -72,13 +74,7 @@ class PatientController extends Controller
             'patient_id' => request('patient_id')
         ]);
 
-        $patient_id = $request->input('patient_id');
-        $patient = Patient::where('patient_id', $patient_id);
-        $employees = Employee::all();
-
-        return view('patient.schedule-manager', 
-        ['patient' => $patient, 
-        'employees' => $employees]);
+        return redirect('/patient/'.$patient_id.'/manage-schedule');
     }
 
     public function update(Request $request, $patient_id)

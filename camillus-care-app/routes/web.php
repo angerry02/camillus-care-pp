@@ -34,4 +34,4 @@ Route::get('/patient/{patient}/edit', [PatientController::class, 'edit']);
 Route::put('/patient/edit/{patient}', [PatientController::class, 'update']);
 ///patient/schedule-manager/save
 Route::get('/patient/{patient}/manage-schedule', [PatientController::class, 'manageSchedule']);
-Route::post('/patient/schedule-manager/save', [PatientController::class, 'saveSchedule']);
+Route::post('/patient/schedule-manager/save/{patient}', [PatientController::class, 'saveSchedule']);
