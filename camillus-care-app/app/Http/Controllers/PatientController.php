@@ -56,7 +56,7 @@ class PatientController extends Controller
     public function manageSchedule(Patient $patient)
     {
         $employees = Employee::all();
-        $employeeSchedules = EmployeeSchedule::where('patient_id', $patient->patient_id);
+        $employeeSchedules = EmployeeSchedule::all();
 
         return view('patient.schedule-manager',
         ['patient' => $patient, 

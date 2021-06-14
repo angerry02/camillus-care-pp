@@ -78,6 +78,29 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
+        <tbody>
+            <?php $i=0; ?>
+            @foreach($employeeSchedules as $employeeSchedule)
+                <tr>
+                    <td><?php echo ++$i;?></td>
+                    <td>
+                        <strong>
+                            {{$employeeSchedule->employee->last_name.', '.$employeeSchedule->employee->first_name.' '.$employeeSchedule->employee->middle_name }}</strong>
+                    </td>
+                    <td>
+                        {{ date('h:i A', strtotime($employeeSchedule->from)) }}
+                    </td>
+                    <td>
+                        {{ date('h:i A', strtotime($employeeSchedule->to)) }}
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')">
+                            <span data-feather="trash-2"></span>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
           </table>
     </div>
 </div>
