@@ -72,7 +72,8 @@ class PatientController extends Controller
             'patient_id' => request('patient_id')
         ]);
 
-        $patient = Patient::where('patient_id', $request('patient_id'));
+        $patient_id = $request->input('patient_id');
+        $patient = Patient::where('patient_id', $patient_id);
         $employees = Employee::all();
 
         return view('patient.schedule-manager', 
