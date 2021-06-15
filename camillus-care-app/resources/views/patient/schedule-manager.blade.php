@@ -75,6 +75,7 @@
                 <th scope="col">Nurse/Caregiver Name</th>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
+                <th scope="col">Effective Date</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -92,6 +93,9 @@
                     </td>
                     <td>
                         {{ date('h:i A', strtotime($employeeSchedule->to)) }}
+                    </td>
+                    <td>
+                        {{ date('d-m-Y', strtotime($employeeSchedule->effective_date)) }}
                     </td>
                     <td>
                         <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')">
