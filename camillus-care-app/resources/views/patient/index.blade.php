@@ -42,20 +42,22 @@
                         <td>
                             @if ($patient->patient_status === 0)
                                 <span class="badge bg-danger">NO SCHEDULE YET</span>
+                            @elseif($patient->patient_status === 1)
+                                <span class="badge bg-success">HANDLED</span>
                             @endif
                         </td>
                         <td>
-                            @if ($patient->patient_status === 0)
-                                <a data-toggle="tooltip" data-placement="top" title="Assignning nurse/caregiver and schedule" class="btn btn-sm btn-success" href="/patient/{{ $patient->patient_id }}/manage-schedule">
-                                    <span data-feather="calendar"></span>
-                                </a>
-                            @endif
+                            <a data-toggle="tooltip" data-placement="top" title="Manage patient/nurse assigned and schedule." class="btn btn-sm btn-success" href="/patient/{{ $patient->patient_id }}/manage-schedule">
+                                <span data-feather="calendar"></span>
+                            </a>
                             <a class="btn btn-sm btn-info" href="/patient/{{ $patient->patient_id }}/edit">
                                 <span data-feather="edit"></span>
                             </a>
-                            <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/patient/delete/{{ $patient->patient_id }}">
-                                <span data-feather="trash-2"></span>
-                            </a>
+                            @if ($patient->patient_status === 0)
+                                <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/patient/delete/{{ $patient->patient_id }}">
+                                    <span data-feather="trash-2"></span>
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

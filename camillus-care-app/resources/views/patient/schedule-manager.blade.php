@@ -72,7 +72,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nurse/Caregiver Name</th>
+                <th scope="col">Assigned Nurse/Caregiver Name</th>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
                 <th scope="col">Effective Date</th>
@@ -98,7 +98,7 @@
                         {{ date('d-m-Y', strtotime($employeeSchedule->effective_date)) }}
                     </td>
                     <td>
-                        <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')">
+                        <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/patient/schedule-manager/delete/{{ $employeeSchedule->id }}">
                             <span data-feather="trash-2"></span>
                         </a>
                     </td>

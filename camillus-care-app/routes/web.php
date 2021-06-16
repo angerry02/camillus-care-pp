@@ -35,3 +35,4 @@ Route::put('/patient/edit/{patient}', [PatientController::class, 'update']);
 ///patient/schedule-manager/save
 Route::get('/patient/{patient}/manage-schedule', [PatientController::class, 'manageSchedule']);
 Route::post('/patient/schedule-manager/save/{patient}', [PatientController::class, 'saveSchedule']);
+Route::get('/patient/schedule-manager/delete/{id}', [PatientController::class, 'deleteSchedule']);

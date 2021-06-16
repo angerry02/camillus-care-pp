@@ -56,7 +56,13 @@ class PatientController extends Controller
     public function manageSchedule(Patient $patient)
     {
         $employees = Employee::all();
-        $employeeSchedules = EmployeeSchedule::all();
+        $employeeSchedules = EmployeeSchedule::where('patient_id', $patient->patient_id)->get();
+
+        //Update patient status to 'Handled'
+        Patient::where('patient_id', $patient->patient_id)
+        ->update([
+            'patient_status' => '1'
+        ]);
 
         return view('patient.schedule-manager',
         ['patient' => $patient, 
@@ -109,6 +115,18 @@ class PatientController extends Controller
     {
         Patient::where('patient_id', $patient_id)->delete();
        
-        return redirect('/patient')->with('message', 'Patient data has been successfully deleted.');
+        return redirect('/patient')
+        ->with('success', 'Patient data has been successfully deleted.');
+    }
+
+    public function deleteSchedule($id)
+    {
+        $employeeSchedules = EmployeeSchedule::where('id', $id)->get()->first();
+        
+        EmployeeSchedule::where('id', $id)->delete();
+       
+        $patient_id = $employeeSchedules->patient_id;
+        return redirect('/patient/'.$patient_id.'/manage-schedule')
+        ->with('success', 'Schedule has been successfully deleted.');
     }
 }
