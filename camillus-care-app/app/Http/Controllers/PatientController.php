@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Patient;
 use App\Models\Employee;
 use App\Models\EmployeeSchedule;
+use App\Models\EndorsementAndMedication;
+use App\Models\LaboratoryFlow;
+use App\Models\VIORecords;
 
 class PatientController extends Controller
 {
@@ -58,12 +61,6 @@ class PatientController extends Controller
         $employees = Employee::all();
         $employeeSchedules = EmployeeSchedule::where('patient_id', $patient->patient_id)->get();
 
-        //Update patient status to 'Handled'
-        Patient::where('patient_id', $patient->patient_id)
-        ->update([
-            'patient_status' => '1'
-        ]);
-
         return view('patient.schedule-manager',
         ['patient' => $patient, 
         'employeeSchedules' => $employeeSchedules,
@@ -79,6 +76,12 @@ class PatientController extends Controller
             'employee_id' => request('employee_id'),
             'patient_id' => request('patient_id')
         ]);
+
+         //Update patient status to 'Handled'
+         Patient::where('patient_id', $patient->patient_id)
+         ->update([
+             'patient_status' => '1'
+         ]);
 
         return redirect('/patient/'.$patient_id.'/manage-schedule');
     }
@@ -128,5 +131,77 @@ class PatientController extends Controller
         $patient_id = $employeeSchedules->patient_id;
         return redirect('/patient/'.$patient_id.'/manage-schedule')
         ->with('success', 'Schedule has been successfully deleted.');
+    }
+
+    public function manageMedicalRecord($patient_id)
+    {
+        $endorsementAndMedication = EndorsementAndMedication::where('patient_id', $patient_id)->get();
+        $laboratoryFlow = LaboratoryFlow::where('patient_id', $patient_id)->get();
+        $vioRecords = VIORecords::where('patient_id', $patient_id)->get();
+        $patient = Patient::where('patient_id', $patient_id)->get()->first();
+
+        return view('patient.manage-medical-record',
+        ['patient' => $patient,
+        'laboratoryFlows' => $laboratoryFlow,
+        'vioRecords' => $vioRecords,
+        'endorsementAndMedications' => $endorsementAndMedication]);
+    }
+
+    public function saveEM()
+    {
+        EndorsementAndMedication::create([
+            'medication' => request('medication'),
+            'frequency' => request('frequency'),
+            'patient_id' => request('patient_id'),
+            'datetime_given' => request('datetime_given')
+        ]);
+
+        $patient_id = request('patient_id');
+
+        return redirect('/patient/'.$patient_id.'/medical-record')
+        ->with('success','Edorsement and medication successfully added.');
+    }
+
+    public function saveLF()
+    {
+        LaboratoryFlow::create([
+            'blood_work' => request('blood_work'),
+            'values' => request('values'),
+            'patient_id' => request('patient_id'),
+            'datetime_added' => request('datetime_added')
+        ]);
+
+        $patient_id = request('patient_id');
+
+        return redirect('/patient/'.$patient_id.'/medical-record')
+        ->with('success','Laboratoty flow data successfully added.')
+        ->with('LF','active');
+    }
+
+    public function saveVIO()
+    {
+        VIORecords::create([
+            'gcs' => request('gcs'),
+            'bp' => request('bp'),
+            'hr' => request('hr'),
+            'rr' => request('rr'),
+            't' => request('t'),
+            'o2_sat' => request('o2_sat'),
+            'iv' => request('iv'),
+            'oral' => request('oral'),
+            'urine' => request('urine'),
+            'drainage' => request('drainage'),
+            'bowel_movement' => request('bowel_movement'),
+            'remark' => request('remark'),
+            'bp' => request('bp'),
+            'patient_id' => request('patient_id'),
+            'datetime_added' => request('datetime_added')
+        ]);
+
+        $patient_id = request('patient_id');
+
+        return redirect('/patient/'.$patient_id.'/medical-record')
+        ->with('success','Vital Signs, Intake and Output data successfully added.')
+        ->with('LF','active');
     }
 }

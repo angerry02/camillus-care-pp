@@ -6,17 +6,16 @@
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <a class="btn btn-primary btn-sm" type="button" href="/employee/create"><span data-feather="user-plus"></span> New</a>
       </div>
-   
 </div>
 
 <div class="card">
     <div class="card-header">
         <h5 class="card-title">
-            Employee: Employee List
+            Employee: Nurse/Caregiver List
         </h5>
     </div>
     <div class="card-body">
-        <table class="table table-hover">
+        <table class="table table-hover table-bordered">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -43,6 +42,9 @@
                         <td>{{$employee->date_hired}}</td>
                         <td>{{$employee->role}}</td>
                         <td>
+                            <a class="btn btn-sm btn-success" href="/employee/{{ $employee->employee_id }}/view-schedule">
+                                <span data-feather="calendar"></span>
+                            </a>
                             <a class="btn btn-sm btn-info" href="/employee/{{ $employee->employee_id }}/edit">
                                 <span data-feather="edit"></span>
                             </a>

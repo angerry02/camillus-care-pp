@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\EmployeeSchedule;
 
 class EmployeeController extends Controller
 {
@@ -72,5 +73,14 @@ class EmployeeController extends Controller
         Employee::where('employee_id', $employee_id)->delete();
        
         return redirect('/employee')->with('message', 'Employee data has been successfully deleted.');
+    }
+
+    public function viewSchedule(Employee $employee)
+    {
+        $employeeSchedules = EmployeeSchedule::where('employee_id', $employee->employee_id)->get();
+
+        return view('employee.view-schedule',
+        ['employeeSchedules' => $employeeSchedules,
+        'employee' => $employee]);
     }
 }
