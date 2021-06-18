@@ -218,6 +218,7 @@
                         <th scope="col">Medication</th>
                         <th scope="col">Frequency</th>
                         <th scope="col">Datetime Given</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -230,6 +231,11 @@
                                 </td>
                                 <td>{{ $endorsementAndMedication->frequency }}</td>
                                 <td>{{ $endorsementAndMedication->datetime_given }}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/patient/EM/delete/{{  $endorsementAndMedication->id }}">
+                                        <span data-feather="trash-2"></span>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -268,6 +274,7 @@
                         <th colspan="2" scope="col" class="text-center">Output</th>
                         <th rowspan="2" scope="col" class="text-center">Bowel Movement</th>
                         <th rowspan="2" scope="col" class="text-center">Remark</th>
+                        <th rowspan="2" scope="col" class="text-center">Action</th>
                       </tr>
 
                       <tr>
@@ -295,6 +302,11 @@
                                 <td>{{ $vioRecord->drainage }}</td>
                                 <td>{{ $vioRecord->bowel_movement }}</td>
                                 <td>{{ $vioRecord->remark }}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/patient/VIO/delete/{{  $vioRecord->id }}">
+                                        <span data-feather="trash-2"></span>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -327,6 +339,7 @@
                         <th scope="col">Blood Works</th>
                         <th scope="col">Values</th>
                         <th scope="col">Datetime</th>
+                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -339,6 +352,11 @@
                                 </td>
                                 <td>{{ $laboratoryFlow->values }}</td>
                                 <td>{{ $laboratoryFlow->datetime_added }}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete this records? This process cannot be undone.')" href="/patient/LF/delete/{{  $laboratoryFlow->id }}">
+                                        <span data-feather="trash-2"></span>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

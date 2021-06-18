@@ -8,8 +8,11 @@
     <meta name="generator" content="Hugo 0.83.1">
     <title>Camillus Care +</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
 
+    
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -25,6 +28,14 @@
         }
       }
       
+      .dark-mode {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.inverted {
+    filter: invert(1) hue-rotate(180deg);
+}
+
     </style>
     
     <link href="{{ asset('css/dashboard.css')}}" rel="stylesheet">

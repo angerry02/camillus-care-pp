@@ -3,9 +3,19 @@
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Employee;
+use App\Models\Patient;
 
 Route::get('/', function () {
-    return view('dashboard');
+
+    $totalNurse = Employee::where('role', 'NURSE')->get()->count();
+    $totalCaregiver = Employee::where('role', 'CAREGIVER')->get()->count();
+    $totalPatient = Patient::all()->count();
+
+    return view('dashboard',
+    ['totalNurse' => $totalNurse,
+    'totalCaregiver' => $totalCaregiver,
+    'totalPatient' => $totalPatient]);
 })->name('dashboard');
 
 Route::post('/employee/save', [EmployeeController::class, 'store']);
@@ -32,3 +42,5 @@ Route::post('/patient/EM/save/{patient}', [PatientController::class, 'saveEM']);
 Route::post('/patient/LF/save', [PatientController::class, 'saveLF']);
 Route::post('/patient/VIO/save', [PatientController::class, 'saveVIO']);
 Route::get('/patient/VIO/delete/{id}', [PatientController::class, 'deleteVIO']);
+Route::get('/patient/LF/delete/{id}', [PatientController::class, 'deleteLF']);
+Route::get('/patient/EM/delete/{id}', [PatientController::class, 'deleteEM']);

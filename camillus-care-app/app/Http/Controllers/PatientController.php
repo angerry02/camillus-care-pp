@@ -174,8 +174,7 @@ class PatientController extends Controller
         $patient_id = request('patient_id');
 
         return redirect('/patient/'.$patient_id.'/medical-record')
-        ->with('success','Laboratoty flow data successfully added.')
-        ->with('LF','active');
+        ->with('success','Laboratoty flow data successfully added.');
     }
 
     public function saveVIO()
@@ -201,17 +200,33 @@ class PatientController extends Controller
         $patient_id = request('patient_id');
 
         return redirect('/patient/'.$patient_id.'/medical-record')
-        ->with('success','Vital Signs, Intake and Output data successfully added.')
-        ->with('LF','active');
+        ->with('success','Vital Signs, Intake and Output data successfully added.');
     }
 
     public function deleteVIO($id)
     {
-        $patient_id = VIORecords::where('id', $id)->get()->first();
+        $patient_id = VIORecords::where('id', $id)->get()->first()->patient_id;
         VIORecords::where('id', $id)->delete();
 
         return redirect('/patient/'.$patient_id.'/medical-record')
-        ->with('success','Vital Signs, Intake and Output data successfully added.')
-        ->with('LF','active');
+        ->with('success','Vital Signs, Intake and Output data successfully deleted.');
+    }
+
+    public function deleteLF($id)
+    {
+        $patient_id = LaboratoryFlow::where('id', $id)->get()->first()->patient_id;
+        LaboratoryFlow::where('id', $id)->delete();
+
+        return redirect('/patient/'.$patient_id.'/medical-record')
+        ->with('success','Laboratory Flow record successfully deleted.');
+    }
+
+    public function deleteEM($id)
+    {
+        $patient_id = EndorsementAndMedication::where('id', $id)->get()->first()->patient_id;
+        EndorsementAndMedication::where('id', $id)->delete();
+
+        return redirect('/patient/'.$patient_id.'/medical-record')
+        ->with('success','Endorsement and Medication record successfully deleted.');
     }
 }
