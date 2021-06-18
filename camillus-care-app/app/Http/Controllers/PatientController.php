@@ -78,7 +78,7 @@ class PatientController extends Controller
         ]);
 
          //Update patient status to 'Handled'
-         Patient::where('patient_id', $patient->patient_id)
+         Patient::where('patient_id', $patient_id)
          ->update([
              'patient_status' => '1'
          ]);
