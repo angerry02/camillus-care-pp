@@ -204,4 +204,14 @@ class PatientController extends Controller
         ->with('success','Vital Signs, Intake and Output data successfully added.')
         ->with('LF','active');
     }
+
+    public function deleteVIO($id)
+    {
+        $patient_id = VIORecords::where('id', $id)->get()->first();
+        VIORecords::where('id', $id)->delete();
+
+        return redirect('/patient/'.$patient_id.'/medical-record')
+        ->with('success','Vital Signs, Intake and Output data successfully added.')
+        ->with('LF','active');
+    }
 }

@@ -31,3 +31,4 @@ Route::get('/patient/{patient_id}/medical-record', [PatientController::class, 'm
 Route::post('/patient/EM/save/{patient}', [PatientController::class, 'saveEM']);
 Route::post('/patient/LF/save', [PatientController::class, 'saveLF']);
 Route::post('/patient/VIO/save', [PatientController::class, 'saveVIO']);
+Route::get('/patient/VIO/delete/{id}', [PatientController::class, 'deleteVIO']);
