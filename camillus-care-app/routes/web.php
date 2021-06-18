@@ -7,7 +7,7 @@ use App\Models\Employee;
 use App\Models\Patient;
 
 Route::get('/', function () {
-
+    
     $totalNurse = Employee::where('role', 'NURSE')->get()->count();
     $totalCaregiver = Employee::where('role', 'CAREGIVER')->get()->count();
     $totalPatient = Patient::all()->count();
