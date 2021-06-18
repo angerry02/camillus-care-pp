@@ -68,12 +68,12 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="hospital_no" class="col-sm-12 form-label">Hospital</label>
-                            <input type="text" id="hospital_no" name="hospital_no" class="form-control" value="{{  $patient->hospital_no }}" required/>
+                            <input type="text" id="hospital_no" name="hospital_no" class="form-control" value="{{  $patient->hospital_no }}"/>
                         </div>
         
                         <div class="form-group">
                             <label for="room_no" class="col-sm-12 form-label">Room#</label>
-                            <input type="text" id="room_no" name="room_no" class="form-control" value="{{  $patient->room_no }}" required/>
+                            <input type="text" id="room_no" name="room_no" class="form-control" value="{{  $patient->room_no }}"/>
                         </div>
         
                         <div class="form-group">
